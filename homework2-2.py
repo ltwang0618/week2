@@ -12,7 +12,6 @@ def calculate_sum_of_bonus(data):
         bonus = individual_bonus(salary, performance, role)
         employees['bonus'] = bonus
         total_bonus += bonus
-    
         
     def get_salary(salary):
         if isinstance(salary, str):
