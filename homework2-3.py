@@ -1,26 +1,31 @@
 def func(*data):
-    middle_names = []
-    full_names = []
+    middlenames = []
+    fullnames = []
 
     for name in data:
-        middle_name_counts = {}
-        for name1 in middle_names:
-            middle_name_counts[name1] = 0
-        for name1 in middle_names:
-            middle_name_counts[name1]+=1 
+        middlenames.append(name[1])
+        fullnames.append(name)
 
-        unique_middle_names = {}
+    for name1 in data:
+        middlenamecounts = {}
+        for name1 in middlenames:
+            middlenamecounts[name1] = 0
+
+        for name1 in middlenames:
+            middlenamecounts[name1]+=1 
+
+        uniquemiddlenames = {}
         for name1 in middle_name_counts:
-            if middle_name_counts[name1] == 1:
-                unique_middle_names.append(name1)
+            if middlenamecounts[name1] == 1:
+                uniquemiddlenames.append(name1)
         
-        if len(unique_middle_names) > 0:
-            for name1 in unique_middle_names:
-                for name in full_names:
+        if len(uniquemiddlenames) > 0:
+            for name1 in uniquemiddlenames:
+                for name in fullnames:
                     if name1 == name[1]:
                         print(name)
-                    else:
-                        print("沒有")
+        else:
+            print("沒有")
 
     func("彭⼤牆", "王明雅", "吳明") # print 彭⼤牆
     func("郭靜雅", "王立強", "林靜宜", "郭立恆", "林花花") # print 林花花
