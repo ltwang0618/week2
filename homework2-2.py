@@ -2,49 +2,52 @@ def calculate_sum_of_bonus(data):
     total_bonus = 0
     employees = data['employees']
 
-    for employee in employees:
-        name = employee['name']
-        salary = employee['salary']
-        performance = employee['performance']
-        role = employee['role']
+    i=0
+    while i < len(employees):
+        name = employees['name']
+        salary = employees['salary']
+        performance = employees['performance']
+        role = employees['role']
         bonus = individual_bonus(salary, performance, role)
-        employee['bonus'] = bonus
+        employees['bonus'] = bonus
         total_bonus += bonus
+    i+=1
         
-        def get_salary(salary):
-            if isinstance(salary, str):
-                if "USD" in salary:
-                    return float(salary.replace("USD", "")) * 30
-                else:
-                    return float(salary)
-            elif isinstance(salary, (int, float)):
-                return salary
+    def get_salary(salary):
+        if isinstance(salary, str):
+            if "USD" in salary:
+                return float(salary.replace("USD", "")) * 30
             else:
-                return 0
+                return float(salary)
+        elif isinstance(salary, (int, float)):
+            return salary
+        else:
+            return 0
 
-            def individual_bonus(salary, performance, role):
-                base_bonus = get_salary(salary) * 0.02
+    def individual_bonus(salary, performance, role):
+        base_bonus = get_salary(salary) * 0.02
 
-                performance_bonus = 0
-                if performance == "above average":
-                    performance_bonus = 2000
-                elif performance == "average":
-                    performance_bonus = 1000
-                elif performance == "below average":
-                    performance_bonus = 600
+        performance_bonus = 0
+        if performance == "above average":
+            performance_bonus = 2000
+        elif performance == "average":
+            performance_bonus = 1000
+        elif performance == "below average":
+            performance_bonus = 600
 
-                role_bonus = 0
-                if role == "Engineer":
-                    role_bonus = base_bonus * 1.2
-                elif role == "CEO":
-                    role_bonus = base_bonus * 1.5
-                elif role == "Sales":
-                    role_bonus = base_bonus * 1
+        role_bonus = 0
+        if role == "Engineer":
+            role_bonus = base_bonus * 1.2
+        elif role == "CEO":
+            role_bonus = base_bonus * 1.5
+        elif role == "Sales":
+            role_bonus = base_bonus * 1
 
-                return base_bonus + performance_bonus + role_bonus
+        return base_bonus + performance_bonus + role_bonus     
                 
 
-                print("Total bonus of all employees:", total_bonus, "TWD")
+        print("Total bonus of all employees:", total_bonus, "TWD")    
+
 
 
         calculate_sum_of_bonus({
