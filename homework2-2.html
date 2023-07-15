@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charse="utf-8" />
+        <title>week2 task2</title>
+    </head>
+    <body>
+        <script>
+            function calculateSumOfBonus(data){
+                var totalBonus = 0;
+                var employees = data.employees;
+
+            for (var i = 0; i < employees.length; i++){
+                var name = employees[i].name;
+                var salary = employees[i].salary;
+                var performance = employees[i].performance;
+                var role = employees[i].role;
+                var bonus = calculateIndividualBonus(salary, performance, role);
+
+                employees[i].bonus = bonus;
+                totalBonus+=bonus;
+            }
+
+            console.log("Total bonus of all employees:", totalBonus, "TWD");
+            }
+            function getSalary(salary) {
+                if (typeof salary === "string") {
+                    if (salary.includes("USD")) {
+                        return parseFloat(salary) * 30;
+                    } else {
+                        return parseFloat(salary);
+                    }
+                } else if (typeof salary === "number") {
+                        return salary; 
+                } else {
+                        return 0;
+                }
+            }
+
+            function calculateIndividualBonus(salary, performance, role) {
+            var baseBonus = getSalary(salary) * 0.02;
+
+            var performanceBonus = 0;
+            if (performance === "above average") {
+                performanceBonus = 2000;
+            } else if (performance === "average") {
+                performanceBonus = 1000;
+            } else if (performance === "below average") {
+                performanceBonus = 600;
+            }
+
+            var roleBonus = 0;
+            if (role === "Engineer") {
+                roleBonus = baseBonus * 1.2;
+            } else if (role === "CEO") {
+                roleBonus = baseBonus * 1.5;
+            } else if (role === "Sales") {
+                roleBonus = baseBonus * 1;
+            }
+            return baseBonus + performanceBonus + roleBonus;
+            }
+
+            calculateSumOfBonus({
+                employees: [
+                    {
+                    name: "John",
+                    salary: "1000USD",
+                    performance: "above average",
+                    role: "Engineer",
+                    },
+                    {
+                    name: "Bob",
+                    salary: 60000,
+                    performance: "average",
+                    role: "CEO",
+                    },
+                    {
+                    name: "Jenny",
+                    salary: "50,000",
+                    performance: "below average",
+                    role: "Sales",
+                    },
+                ],
+            });
+        </script>            
+    </body>
+</html>

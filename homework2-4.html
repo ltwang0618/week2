@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charse="utf-8" />
+        <title>week2 task2</title>
+    </head>
+    <body>
+        <script>
+                function getNumber(index) {
+                    let value = 0;
+                    let increment=0;
+
+                    for (let i=0; i <= index; i++){
+                        if (i % 2 === 0) {
+                            increment = 0;
+                        } else {
+                            increment = 2.5;
+                        }
+                        value = increment+(i/2)*3;
+                    }
+                    return console.log(value);
+                }
+                getNumber(1); // Prints 4
+                getNumber(5); // Prints 10
+                getNumber(10); // Prints 15
+        </script>            
+    </body>
+</html>

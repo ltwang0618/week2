@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charse="utf-8" />
+        <title>Javascript 流程控制：物件基礎</title>
+    </head>
+    <body>
+        <script>
+            function findAndPrint(messages){
+            let older = [];
+                
+            for (let [person, age] of Object.entries(messages)) {
+            let keywords = ["18 years old", "legal age", "vote"];
+                
+                for (let i=0; i<keywords.length; i++){
+                    if (age.includes(keywords[i])){
+                    older.push(person);
+                    break;
+                    }
+                }
+            }
+            older.forEach(function(person){
+                console.log(person);
+            })
+        }
+
+            findAndPrint({
+            "Bob":"My name is Bob. I'm 18 years old.",
+            "Mary":"Hello, glad to meet you.",
+            "Copper":"I'm a college student. Nice to meet you.",
+            "Leslie":"I am of legal age in Taiwan.",
+            "Vivian":"I will vote for Donald Trump next week",
+            "Jenny":"Good morning."
+            });
+        </script>            
+    </body>
+</html>
