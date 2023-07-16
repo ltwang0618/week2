@@ -8,43 +8,40 @@
     <body>
         <script>
             function func(...data) {
-                let middleNames = [];
-                let fullNames = [];
+            let middleNames = [];
+            let fullNames = [];
 
-                for (let name of data) {
-                        middleNames.push(name[1]);
-                        fullNames.push(name)
+            for (let name of data) {
+            middleNames.push(name[1]);
+            fullNames.push(name)
+            }
+
+            var uniquename = false;
+            for (var i = 0; i < middleNames.length; i++) {
+                var uniqueMiddleNames = true;
+                var list = middleNames[i];
+                for (var j = 0; j < middleNames.length; j++) {
+                    if (i !== j) {
+                        if (middleNames[j] === list) {
+                            uniqueMiddleNames = false;
+                            break;
+                        }
+                    }
                 }
-                for (let name1 of data) {
-                    let middleNameCounts = {};
-                    for (let name1 of middleNames) {
-                        middleNameCounts[name1]=0
+                    if (uniqueMiddleNames) {
+                        uniquename = true;
+                        console.log(fullNames[i]);
                     }
-                    for (let name1 of middleNames) {
-                        middleNameCounts[name1]+=1
-                    }
-                    let uniqueMiddleNames=[]
-                    for (let name1 in middleNameCounts) {
-                        if (middleNameCounts[name1] === 1) {
-                            uniqueMiddleNames.push(name1);
-                        }
-                    }
-                    if (uniqueMiddleNames.length> 0) {
-                        for (let name1 of uniqueMiddleNames){ 
-                            for (let name of fullNames) {
-                                if (name1 === name[1]){
-                                    console.log(name);
-                                }
-                            }
-                        }
-                    } else {
-                        console.log("沒有")   
-                    }
+                }    
+                if (!uniquename) {
+                    console.log("沒有");
                 }
             }
-                func("彭⼤牆", "王明雅", "吳明"); // print 彭⼤牆
-                func("郭靜雅", "王立強", "林靜宜", "郭立恆", "林花花"); // print 林花花
-                func("郭宣雅", "林靜宜", "郭宣恆", "林靜花"); // print 沒有 
+
+            func("彭⼤牆", "王明雅", "吳明"); // 印出彭大牆
+            func("郭靜雅", "王立強", "林靜宜", "郭立恆", "林花花"); // 印出林花花
+            func("郭宣雅", "林靜宜", "郭宣恆", "林靜花"); // 印出"沒有"
+
         </script>            
     </body>
 </html>
